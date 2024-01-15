@@ -13,7 +13,7 @@ async function main() {
   const lockedAmount = hre.ethers.utils.parseEther("0.001");
 
   const Lock = await hre.ethers.getContractFactory("IDS");
-  const lock = await Lock.deploy(["0x8F30A16Ef017D17e0f73ED8b83B59963e7907486"], ["0x8F30A16Ef017D17e0f73ED8b83B59963e7907486"], ["0x8F30A16Ef017D17e0f73ED8b83B59963e7907486"]);
+  const lock = await Lock.deploy(["0x10E0c14163610a27Da33336fb86962361b532070"], ["0x10E0c14163610a27Da33336fb86962361b532070"], ["0x10E0c14163610a27Da33336fb86962361b532070"]);
 
 
   await lock.deployed();
@@ -47,7 +47,7 @@ async function main() {
   // const deployedVerifyContract = await verifyContract.deploy();
 
   const IDS = await hre.ethers.getContractFactory("IDS");
-  const deployedVerifyContract = await IDS.deploy(["0xf80b3371535e8fe99d4940d6a5a529c1b168acc3"], ["0xf80b3371535e8fe99d4940d6a5a529c1b168acc3"], ["0xf80b3371535e8fe99d4940d6a5a529c1b168acc3"]);
+  const deployedVerifyContract = await IDS.deploy(["0x10E0c14163610a27Da33336fb86962361b532070"], ["0x10E0c14163610a27Da33336fb86962361b532070"], ["0x10E0c14163610a27Da33336fb86962361b532070"]);
 
 
   await deployedVerifyContract.deployed();
@@ -57,12 +57,12 @@ async function main() {
 
   console.log("Sleeping.....");
   // Wait for etherscan to notice that the contract has been deployed
-  await sleep(10000);
+  await sleep(100000);
 
   // Verify the contract after deploying
   await hre.run("verify:verify", {
     address: deployedVerifyContract.address,
-    constructorArguments: [["0xf80b3371535e8fe99d4940d6a5a529c1b168acc3"], ["0xf80b3371535e8fe99d4940d6a5a529c1b168acc3"], ["0xf80b3371535e8fe99d4940d6a5a529c1b168acc3"]],
+    constructorArguments: [["0x10E0c14163610a27Da33336fb86962361b532070"], ["0x10E0c14163610a27Da33336fb86962361b532070"], ["0x10E0c14163610a27Da33336fb86962361b532070"]],
   });
 }
 

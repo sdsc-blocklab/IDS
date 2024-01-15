@@ -73,7 +73,7 @@ contract IDS is Ownable, AccessControl {
         _grantRole(STORAGE_ROLE, storageOwner);
     }
 
-    function addeDataUser(address dataUsers) public {
+    function addDataUser(address dataUsers) public {
         require(hasRole(OWNER_ROLE, msg.sender), "Caller is not a data owner");
         require(approvedDataQueryers[dataUsers], "Data user is not approved");
         _grantRole(RETRIEVAL_ROLE, dataUsers);

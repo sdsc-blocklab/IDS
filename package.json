@@ -9,6 +9,7 @@
     "@openzeppelin/cli": "^2.8.2",
     "@openzeppelin/contracts": "^4.9.2",
     "@openzeppelin/contracts-ethereum-package": "^3.0.0",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3"
   }
 }
