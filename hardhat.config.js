@@ -10,16 +10,16 @@ const ETHERSCAN_KEY = process.env.ETHERSCAN_KEY;
 module.exports = {
   solidity: "0.8.9",
   networks: {
-    goerli: {
-      url: "https://eth-goerli.g.alchemy.com/v2/D31u3za0fuMzN5hvaJLHnQq8yEXhBofv",
+    sepolia: {
+      url: "https://ethereum-sepolia-rpc.publicnode.com",
       accounts: [GOERLI_PRIVATE_KEY],
-      chainId: 5,
+      chainId: 11155111,
       allowUnlimitedContractSize: true,
     },
   },
   etherscan: {
     apiKey: {
-      goerli: ETHERSCAN_KEY
+      sepolia: ETHERSCAN_KEY,
     },
-  }
+  },
 };

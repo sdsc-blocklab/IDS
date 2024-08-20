@@ -6,32 +6,12 @@
 // global scope, and execute the script.
 const hre = require("hardhat");
 
-async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
-
-  const lockedAmount = hre.ethers.utils.parseEther("0.001");
-
-  const Lock = await hre.ethers.getContractFactory("IDS");
-  const lock = await Lock.deploy(["0x10E0c14163610a27Da33336fb86962361b532070"], ["0x10E0c14163610a27Da33336fb86962361b532070"], ["0x10E0c14163610a27Da33336fb86962361b532070"]);
-
-
-  await lock.deployed();
-
-  console.log(
-    `Lock with ${ethers.utils.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
-  );
-}
-
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
 // main().catch((error) => {
 //   console.error(error);
 //   process.exitCode = 1;
 // });
-
 
 const { ethers } = require("hardhat");
 require("dotenv").config({ path: ".env" });
@@ -47,8 +27,12 @@ async function main() {
   // const deployedVerifyContract = await verifyContract.deploy();
 
   const IDS = await hre.ethers.getContractFactory("IDS");
-  const deployedVerifyContract = await IDS.deploy(["0x10E0c14163610a27Da33336fb86962361b532070"], ["0x10E0c14163610a27Da33336fb86962361b532070"], ["0x10E0c14163610a27Da33336fb86962361b532070"]);
 
+  const deployedVerifyContract = await IDS.deploy(
+    ["0x10E0c14163610a27Da33336fb86962361b532070"],
+    ["0x10E0c14163610a27Da33336fb86962361b532070"],
+    ["0x10E0c14163610a27Da33336fb86962361b532070"]
+  );
 
   await deployedVerifyContract.deployed();
 
@@ -57,12 +41,16 @@ async function main() {
 
   console.log("Sleeping.....");
   // Wait for etherscan to notice that the contract has been deployed
-  await sleep(100000);
+  await sleep(10000);
 
   // Verify the contract after deploying
   await hre.run("verify:verify", {
     address: deployedVerifyContract.address,
-    constructorArguments: [["0x10E0c14163610a27Da33336fb86962361b532070"], ["0x10E0c14163610a27Da33336fb86962361b532070"], ["0x10E0c14163610a27Da33336fb86962361b532070"]],
+    constructorArguments: [
+      ["0x10E0c14163610a27Da33336fb86962361b532070"],
+      ["0x10E0c14163610a27Da33336fb86962361b532070"],
+      ["0x10E0c14163610a27Da33336fb86962361b532070"],
+    ],
   });
 }
 
